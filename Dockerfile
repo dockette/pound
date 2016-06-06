@@ -8,6 +8,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
 
 # Pound configuration
-ADD ./pound.cfg /etc/pound/config.cfg
+ADD ./pound/pound.cfg /etc/pound/config.cfg
 
 CMD ["pound", "-f", "/etc/pound/config.cfg"]
