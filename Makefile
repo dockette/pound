@@ -1,10 +1,9 @@
 DOCKER_IMAGE=dockette/pound
 DOCKER_TAG?=latest
-DOCKER_PLATFORMS?=linux/amd64,linux/arm64
 
 .PHONY: build
 build:
-	docker buildx build --platform ${DOCKER_PLATFORMS} -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
+	docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
 
 .PHONY: test
 test:

@@ -8,7 +8,7 @@
 </p>
 
 <p align=center>
-   Legacy Docker image for <a href="https://www.apsis.ch/pound.html">Pound</a>, an HTTP/HTTPS reverse proxy and load balancer.
+   Legacy Docker image for <a href="https://github.com/graygnuorg/pound">Pound</a>, an HTTP/HTTPS reverse proxy and load balancer.
 </p>
 
 -----
@@ -41,6 +41,8 @@ docker run --rm -it \
 This image is intentionally kept close to the original legacy setup. It uses the historical `dockette/debian:jessie` base image and Debian Jessie `pound` package, so changes should stay focused on keeping the existing image buildable and testable.
 
 ## Development
+
+Build a local image before running tests or starting the container:
 
 ```bash
 make build
