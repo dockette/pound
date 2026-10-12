@@ -1,9 +1,9 @@
-FROM dockette/debian:jessie
+FROM debian:trixie-slim
 
-MAINTAINER Milan Sulc <sulcmil@gmail.com>
+LABEL maintainer="Milan Sulc <sulcmil@gmail.com>"
 
 RUN apt-get update && \
-	apt-get install -y pound && \
+    apt-get install --no-install-recommends -y pound && \
     apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
 
