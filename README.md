@@ -38,7 +38,7 @@ docker run --rm -it \
 
 ## Legacy Constraints
 
-This image is intentionally kept close to the original legacy setup. It uses the historical `dockette/debian:jessie` base image and Debian Jessie `pound` package, so changes should stay focused on keeping the existing image buildable and testable.
+This image is intentionally kept close to the original legacy setup. It uses the official `debian:trixie-slim` base image and Debian Trixie `pound` package, so changes should stay focused on keeping the existing image buildable and testable.
 
 ## Development
 

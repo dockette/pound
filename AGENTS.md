@@ -8,8 +8,8 @@ Dockette Pound builds `dockette/pound`, a legacy Pound HTTP/HTTPS reverse proxy 
 
 - Default image: `dockette/pound:latest`.
 - Build context: repository root `.` with `Dockerfile` and `pound/pound.cfg`.
-- Base image: `dockette/debian:jessie`.
-- The image installs the Debian Jessie `pound` package and starts `pound -f /etc/pound/config.cfg`.
+- Base image: `debian:trixie-slim`.
+- The image installs the Debian Trixie `pound` package and starts `pound -f /etc/pound/config.cfg`.
 - GitHub Actions builds `linux/amd64` for tests, then publishes `linux/amd64,linux/arm64` through the shared Dockette Docker workflow on `master` and the weekly schedule.
 
 ## Commands
