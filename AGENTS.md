@@ -17,6 +17,7 @@ Dockette Pound builds `dockette/pound`, a legacy Pound HTTP/HTTPS reverse proxy 
 - `make build` builds `${DOCKER_IMAGE}:${DOCKER_TAG}` from `.`.
 - `make test` runs `pound -V` and validates `/etc/pound/config.cfg` with `pound -c -f` inside the built image.
 - `make run` starts the image locally with `80:80` published.
+- `VERSION` is the release date; `make release` bumps it. CI pushes `latest` also as `<VERSION>` and creates the GitHub release.
 
 ## Testing Notes
 

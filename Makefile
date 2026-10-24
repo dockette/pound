@@ -1,5 +1,6 @@
 DOCKER_IMAGE=dockette/pound
 DOCKER_TAG?=latest
+VERSION:=$(shell cat VERSION)
 
 .PHONY: build
 build:
@@ -13,3 +14,13 @@ test:
 .PHONY: run
 run:
 	docker run --rm -it -p 80:80 ${DOCKER_IMAGE}:${DOCKER_TAG}
+
+.PHONY: version
+version:
+	@echo ${VERSION}
+
+.PHONY: release
+release:
+	@date -u +%Y.%m.%d > VERSION
+	@echo "VERSION: ${VERSION} -> $$(cat VERSION)"
+	@echo "next: git commit -am \"Release: $$(cat VERSION)\" && git push"

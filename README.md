@@ -40,6 +40,11 @@ docker run --rm -it \
 
 This image is intentionally kept close to the original legacy setup. It uses the official `debian:trixie-slim` base image and Debian Trixie `pound` package, so changes should stay focused on keeping the existing image buildable and testable.
 
+## Versions
+
+The release version is the date in [`VERSION`](VERSION). CI pushes `latest` also as `dockette/pound:<VERSION>`.
+To release, run `make release`, commit and push to `master`.
+
 ## Development
 
 Build a local image before running tests or starting the container:
@@ -48,6 +53,8 @@ Build a local image before running tests or starting the container:
 make build
 make test
 make run
+make version
+make release
 ```
 
 ## Maintenance
