@@ -10,14 +10,14 @@ Dockette Pound builds `dockette/pound`, a legacy Pound HTTP/HTTPS reverse proxy 
 - Build context: repository root `.` with `Dockerfile` and `pound/pound.cfg`.
 - Base image: `debian:trixie-slim`.
 - The image installs the Debian Trixie `pound` package and starts `pound -f /etc/pound/config.cfg`.
-- GitHub Actions builds `linux/amd64` for tests, then publishes `linux/amd64,linux/arm64` through the shared Dockette Docker workflow on `master` and the weekly schedule.
+- GitHub Actions builds `linux/amd64` for tests, then publishes `linux/amd64,linux/arm64` in one build job on `master` and the weekly schedule; other branches only build.
 
 ## Commands
 
 - `make build` builds `${DOCKER_IMAGE}:${DOCKER_TAG}` from `.`.
 - `make test` runs `pound -V` and validates `/etc/pound/config.cfg` with `pound -c -f` inside the built image.
 - `make run` starts the image locally with `80:80` published.
-- `VERSION` is the release date; `make release` bumps it. CI pushes `latest` also as `<VERSION>` and creates the GitHub release.
+- `VERSION` is a key=value file with the release date (`VERSION=...`); `make release` sets today's date. CI pushes `latest` also as `<VERSION>` and creates the GitHub release.
 
 ## Testing Notes
 
