@@ -1,6 +1,8 @@
 DOCKER_IMAGE=dockette/pound
 DOCKER_TAG?=latest
 
+include VERSION
+
 .PHONY: build
 build:
 	docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
@@ -13,3 +15,12 @@ test:
 .PHONY: run
 run:
 	docker run --rm -it -p 80:80 ${DOCKER_IMAGE}:${DOCKER_TAG}
+
+.PHONY: version
+version:
+	@echo ${VERSION}
+
+.PHONY: release
+release:
+	@sed -i.bak "s/^VERSION=.*/VERSION=$$(date -u +%Y.%m.%d)/" VERSION && rm VERSION.bak
+	@cat VERSION
