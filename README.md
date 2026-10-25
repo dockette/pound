@@ -13,43 +13,45 @@
 
 -----
 
+Legacy image, kept close to the original setup. It uses the official `debian:trixie-slim` base image and the Debian
+Trixie `pound` package, so changes stay focused on keeping the image buildable and testable.
+
+## Features
+
+- Pound from the Debian Trixie package on `debian:trixie-slim`
+- Starts Pound in the foreground with `/etc/pound/config.cfg`
+- Bundled configuration listens on port `80` and forwards requests with host headers matching `*.local.dev` to backend
+  host `app` on port `80`
+
 ## Usage
 
-```bash
-docker run --rm -it \
-  -p 80:80 \
-  dockette/pound:latest
+```sh
+docker run --rm -it -p 80:80 dockette/pound:latest
+
+# use your own configuration
+docker run --rm -it -p 80:80 -v "$(pwd)/pound.cfg:/etc/pound/config.cfg:ro" dockette/pound:latest
 ```
 
-The image starts Pound in the foreground with `/etc/pound/config.cfg`.
+## Versions
 
-## Configuration
+| Version | Release |
+|---------|---------|
+| `dockette/pound:YYYY.MM.DD` | release `YYYY.MM.DD` |
+| `dockette/pound:latest` | latest build of `master` |
 
-The bundled configuration listens on port `80` and forwards requests with host headers matching `*.local.dev` to backend host `app` on port `80`.
-
-To use your own configuration:
-
-```bash
-docker run --rm -it \
-  -p 80:80 \
-  -v "$(pwd)/pound.cfg:/etc/pound/config.cfg:ro" \
-  dockette/pound:latest
-```
-
-## Legacy Constraints
-
-This image is intentionally kept close to the original legacy setup. It uses the official `debian:trixie-slim` base image and Debian Trixie `pound` package, so changes should stay focused on keeping the existing image buildable and testable.
+Releases are listed on [GitHub](https://github.com/dockette/pound/releases).
 
 ## Development
 
-Build a local image before running tests or starting the container:
-
-```bash
-make build
-make test
-make run
+```sh
+make build          # build the image
+make test           # check pound -V and the bundled config
+make run            # run Pound on port 80
+make version        # print VERSION
+make release        # set today's date in VERSION
 ```
 
 ## Maintenance
 
-See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to [support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
+See [how to contribute](https://github.com/dockette/.github/blob/master/CONTRIBUTING.md) to this package. Consider to
+[support](https://github.com/sponsors/f3l1x) **f3l1x**. Thank you for using this package.
